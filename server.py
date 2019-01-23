@@ -9,7 +9,7 @@ Session = sessionmaker(bind=engine)
 
 Base = declarative_base()
 
-class Modulos(Base) :
+class Modulos(Base):
     __tablename__ = 'modulos'
     idmodulo = Column(Integer, primary_key=True)
     nombre = Column(String)
