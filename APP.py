@@ -1,24 +1,24 @@
 from Models import *
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
-
+from Models.conexion import Engine, Session
 # la conexion a la db
-Engine = create_engine('mysql+pymysql://root:cucei@localhost:3306/mysqlalchemy', echo=True)
+# ahora en archivo conexion
 
 # objeto que heredara la capacidad de orm
-ORM_Base = declarative_base()
+# se mueve a user.py
+# ORM_Base = declarative_base()
 
 # aqui va el codigo del modelo
 
 # crear los schema
-# ORM_Base.metadata.create_all(Engine)
+# se debe usar la misma instancia del engine que define los modelos
+User.ORM_Base.metadata.create_all(Engine)
 
 # instanciar un objeto user solo instancia no se guarda aun pero valida datos
-marco = User.User(nombre="Marco Gallegos", email="ma_galeza@hotmail.com", password="noseachismoso:v")
+marco = User.User(nombre="Marco Gallegos", email="ma_galeza@hotmail.com", password="no sea chismoso :v")
 
-# la session es el objeto responsable de llevar/traer a la bd todo
-Session = sessionmaker(bind=Engine)
+# la session es el objeto responsable de llevar/traer a la bd
+# la sesion se movio a conexion
+# Session = sessionmaker(bind=Engine)
 ORM = Session()
 
 ORM.add(marco)

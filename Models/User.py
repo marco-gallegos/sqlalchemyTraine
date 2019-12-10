@@ -13,3 +13,8 @@ class User(ORM_Base):
     nombre = Column(String(200))
     email = Column(String(200))
     password = Column(String(200))
+
+if __name__ == "__main__":
+    from .conexion import Engine
+
+
